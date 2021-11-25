@@ -1,0 +1,151 @@
+<div>
+  <div>
+    <h1>
+      List of all foods
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new food
+    </h2>
+
+    <form action="/insert_food" method="post">
+      <div>
+        <label for="title_box">
+          Title
+        </label>
+
+        <textarea id="title_box" name="query_title" rows="3"></textarea>
+      </div>
+
+      <div>
+        <label for="caption_box">
+          Caption
+        </label>
+
+        <textarea id="caption_box" name="query_caption" rows="3"></textarea>
+      </div>
+
+      <div>
+        <label for="meals_avaliable_box">
+          Meals avaliable
+        </label>
+
+        <input type="text" id="meals_avaliable_box" name="query_meals_avaliable">
+      </div>
+
+      <div>
+        <label for="image_box">
+          Image
+        </label>
+
+        <input type="text" id="image_box" name="query_image">
+      </div>
+
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id">
+      </div>
+
+      <button>
+        Create food
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Title
+        </th>
+
+        <th>
+          Caption
+        </th>
+
+        <th>
+          Meals avaliable
+        </th>
+
+        <th>
+          Image
+        </th>
+
+        <th>
+          User
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_foods.each do |a_food| %>
+      <tr>
+        <td>
+          <%= a_food.id %>
+        </td>
+
+        <td>
+          <%= a_food.title %>
+        </td>
+
+        <td>
+          <%= a_food.caption %>
+        </td>
+
+        <td>
+          <%= a_food.meals_avaliable %>
+        </td>
+
+        <td>
+          <img src="<%= a_food.image %>">
+          
+        </td>
+
+        <td>
+          <%= a_food.user_id %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_food.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_food.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/foods/<%= a_food.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

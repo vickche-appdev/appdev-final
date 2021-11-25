@@ -1,0 +1,118 @@
+<div>
+  <div>
+    <h1>
+      List of all users
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new user
+    </h2>
+
+    <form action="/insert_user" method="post">
+      <div>
+        <label for="username_box">
+          Username
+        </label>
+
+        <input type="text" id="username_box" name="query_username">
+      </div>
+
+      <div>
+        <label for="rsvp_count_box">
+          Rsvp count
+        </label>
+
+        <input type="text" id="rsvp_count_box" name="query_rsvp_count">
+      </div>
+
+      <div>
+        <label for="post_count_box">
+          Post count
+        </label>
+
+        <input type="text" id="post_count_box" name="query_post_count">
+      </div>
+
+      <button>
+        Create user
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table>
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Username
+        </th>
+
+        <th>
+          Rsvp count
+        </th>
+
+        <th>
+          Post count
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_users.each do |a_user| %>
+      <tr>
+        <td>
+          <%= a_user.id %>
+        </td>
+
+        <td>
+          <%= a_user.username %>
+        </td>
+
+        <td>
+          <%= a_user.rsvp_count %>
+        </td>
+
+        <td>
+          <%= a_user.post_count %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_user.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_user.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/users/<%= a_user.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

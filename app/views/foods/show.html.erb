@@ -1,0 +1,131 @@
+<div>
+  <div>
+    <h1>
+      Food #<%= @the_food.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/foods">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_food/<%= @the_food.id %>">
+          Delete food
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Title
+      </dt>
+      <dd>
+        <%= @the_food.title %>
+      </dd>
+
+      <dt>
+        Caption
+      </dt>
+      <dd>
+        <%= @the_food.caption %>
+      </dd>
+
+      <dt>
+        Meals avaliable
+      </dt>
+      <dd>
+        <%= @the_food.meals_avaliable %>
+      </dd>
+
+      <dt>
+        Image
+      </dt>
+      <dd>
+        <img src="<%= @the_food.image %>">
+      </dd>
+
+      <dt>
+        User
+      </dt>
+      <dd>
+        <%= @the_food.user_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_food.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_food.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit food
+    </h2>
+
+    <form action="/modify_food/<%= @the_food.id %>"  method="post" >
+      <div>
+        <label for="title_box">
+          Title
+        </label>
+
+        <textarea id="title_box" name="query_title"><%= @the_food.title %></textarea>
+      </div>
+
+      <div>
+        <label for="caption_box">
+          Caption
+        </label>
+
+        <textarea id="caption_box" name="query_caption"><%= @the_food.caption %></textarea>
+      </div>
+
+      <div>
+        <label for="meals_avaliable_box">
+          Meals avaliable
+        </label>
+
+        <input type="text" id="meals_avaliable_box" name="query_meals_avaliable" value="<%= @the_food.meals_avaliable %>">
+      </div>
+
+      <div>
+        <label for="image_box">
+          Image
+        </label>
+
+        <input type="text" id="image_box" name="query_image" value="<%= @the_food.image %>">
+      </div>
+
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_food.user_id %>">
+      </div>
+
+      <button>
+        Update food
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
