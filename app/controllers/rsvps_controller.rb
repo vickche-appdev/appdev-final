@@ -4,6 +4,10 @@ class RsvpsController < ApplicationController
 
     @list_of_rsvps = matching_rsvps.order({ :created_at => :desc })
 
+    matching_foods = Food.all
+
+    @list_of_foods = matching_foods.order({ :created_at => :desc })
+
     render({ :template => "rsvps/index.html.erb" })
   end
 

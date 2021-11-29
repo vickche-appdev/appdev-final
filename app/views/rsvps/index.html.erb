@@ -15,21 +15,17 @@
     </h2>
 
     <form action="/insert_rsvp" method="post">
-      <div>
-        <label for="user_id_box">
-          User
-        </label>
+       
 
-        <input type="text" id="user_id_box" name="query_user_id">
-      </div>
+  <select name="query_food_id" id="food_id_box">
+   <%  @list_of_foods.each do |food| %>
+      <option value="<%= food.id %>">
+        <%= food.title %>
+      </option>
+      <% end %>
+ </select>
 
-      <div>
-        <label for="food_id_box">
-          Food
-        </label>
-
-        <input type="text" id="food_id_box" name="query_food_id">
-      </div>
+ <input type="hidden" id="user_id_box" name="query_user_id" value="<%= session.fetch(:user_id) %>">
 
       <button>
         Create rsvp
@@ -74,7 +70,7 @@
         </td>
 
         <td>
-          <%= a_rsvp.user_id %>
+          <%= a_rsvp.user.first_name %>
           <%#make this a username%>
         </td>
 
