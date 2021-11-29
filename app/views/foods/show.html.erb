@@ -1,8 +1,36 @@
+
+
+
+
+
 <div>
   <div>
     <h1>
       Food #<%= @the_food.id %> details
     </h1>
+
+
+<% if @user_bookmarks == nil %>
+<%#and if @user_bookmarks isnt signed in... How to tell if they are signed in?%>
+
+
+
+<dt>RSVP for this meal</dt>
+  <dd>
+    <form action="/insert_rsvp" method="post" > 
+      <label for="rsvped_meal"></label>
+      <input id="rsvped_mealed" type="hidden" name="query_food_id" value="<%= @the_food.id %>">
+
+      <label for="rsvper"></label>
+      <input id="rsvper" type="hidden" name="query_user_id" value= "<%= session.fetch(:user_id) %>">
+
+      <button>Free Food Coming!</button>
+    </form>
+  </dd>
+
+<% else %>
+
+<% end %>
 
     <div>
       <div>

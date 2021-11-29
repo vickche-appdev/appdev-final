@@ -1,0 +1,86 @@
+<div>
+  <div>
+    <h1>
+      Rsvp #<%= @the_rsvp.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/rsvps">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_rsvp/<%= @the_rsvp.id %>">
+          Delete rsvp
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        User
+      </dt>
+      <dd>
+        <%= @the_rsvp.user_id %>
+      </dd>
+
+      <dt>
+        Food
+      </dt>
+      <dd>
+        <%= @the_rsvp.food_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_rsvp.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_rsvp.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit rsvp
+    </h2>
+
+    <form action="/modify_rsvp/<%= @the_rsvp.id %>"  method="post" >
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_rsvp.user_id %>">
+      </div>
+
+      <div>
+        <label for="food_id_box">
+          Food
+        </label>
+
+        <input type="text" id="food_id_box" name="query_food_id" value="<%= @the_rsvp.food_id %>">
+      </div>
+
+      <button>
+        Update rsvp
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

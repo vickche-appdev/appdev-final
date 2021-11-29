@@ -1,5 +1,24 @@
 Rails.application.routes.draw do
  
+  # Routes for the Rsvp resource:
+
+  # CREATE
+  post("/insert_rsvp", { :controller => "rsvps", :action => "create" })
+          
+  # READ
+  get("/rsvps", { :controller => "rsvps", :action => "index" })
+  
+  get("/rsvps/:path_id", { :controller => "rsvps", :action => "show" })
+  
+  # UPDATE
+  
+  post("/modify_rsvp/:path_id", { :controller => "rsvps", :action => "update" })
+  
+  # DELETE
+  get("/delete_rsvp/:path_id", { :controller => "rsvps", :action => "destroy" })
+
+  #------------------------------
+
   # Routes for the User account:
 
   # SIGN UP FORM

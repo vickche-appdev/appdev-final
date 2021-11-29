@@ -37,15 +37,15 @@
           <a href="/user_sign_out"> Sign Out</a>
         </li>
         <li>
-          <a href="/bookmarks"> Bookmarks</a>
+          <a href="/rsvps"> My RSVPs </a>
         </li>
          <li>
-          <a href="/movies"> Home</a>
+          <a href="/"> Home</a>
         </li>
        
 
         <li>
-          <%=session.fetch(:user_id)%>
+          User #<%= session.fetch(:user_id)%>
         </li>
       <ul>
       <% if notice.present? %>

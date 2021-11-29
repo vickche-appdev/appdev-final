@@ -1,0 +1,103 @@
+<div>
+  <div>
+    <h1>
+      List of all rsvps
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new rsvp
+    </h2>
+
+    <form action="/insert_rsvp" method="post">
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id">
+      </div>
+
+      <div>
+        <label for="food_id_box">
+          Food
+        </label>
+
+        <input type="text" id="food_id_box" name="query_food_id">
+      </div>
+
+      <button>
+        Create rsvp
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table>
+      <tr>
+        <th>
+          RSVP #
+        </th>
+
+        <th>
+          User
+        </th>
+
+        <th>
+          Food
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_rsvps.each do |a_rsvp| %>
+      <tr>
+        <td>
+          <%= a_rsvp.id %>
+        </td>
+
+        <td>
+          <%= a_rsvp.user_id %>
+          <%#make this a username%>
+        </td>
+
+        <td>
+          <%= a_rsvp.food.title %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_rsvp.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_rsvp.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/rsvps/<%= a_rsvp.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>
