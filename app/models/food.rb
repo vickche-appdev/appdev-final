@@ -12,4 +12,7 @@
 #  user_id         :integer
 #
 class Food < ApplicationRecord
+  def poster
+    return User.where({ :id => self.owner_id }).at(0)
+  end
 end

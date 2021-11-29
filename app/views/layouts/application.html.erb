@@ -16,6 +16,53 @@
   </head>
 
   <body>
+    <p style="color:green;">
+<%= notice%>
+</p>
+
+<p style="color:red;">
+<%= alert %>
+</p>
+
+
+      <ul>
+        <li>
+          <a href="/user_sign_up"> Sign Up</a>
+        </li>
+
+       <li>
+          <a href="/user_sign_in"> Sign In</a>
+        </li>
+           <li>
+          <a href="/user_sign_out"> Sign Out</a>
+        </li>
+        <li>
+          <a href="/bookmarks"> Bookmarks</a>
+        </li>
+         <li>
+          <a href="/movies"> Home</a>
+        </li>
+       
+
+        <li>
+          <%=session.fetch(:user_id)%>
+        </li>
+      <ul>
+      <% if notice.present? %>
+
+       <div style = "border: thin red solid; color: green">
+          <%= notice %>
+      </div> 
+
+      <% end %>
+
+       <% if alert.present? %>
+      <div style = "border: thin red solid; color: green">
+          <%= alert %>
+      </div>
+      <% end %>
+
+
     <%= yield %>
   </body>
 </html>
