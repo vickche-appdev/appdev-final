@@ -20,17 +20,25 @@
 
     <dl>
       <dt>
-        User
+       Meal reserved for:
       </dt>
       <dd>
-        <%= @the_rsvp.user_id %>
+        <%= @the_rsvp.user.first_name %>
       </dd>
 
       <dt>
-        Food
+        Free Food:
       </dt>
       <dd>
-        <%= @the_rsvp.food_id %>
+        <%= @the_rsvp.food.title %>
+      </dd>
+
+      <dt>
+        Image:
+      </dt>
+      <dd>
+       <img src="<%= @the_rsvp.food.image %>">
+        
       </dd>
 
       <dt>
@@ -53,34 +61,36 @@
 <hr>
 
 
-<div>
+ <%# <div>
   <div>
     <h2>
       Edit rsvp
     </h2>
 
-    <form action="/modify_rsvp/<%= @the_rsvp.id %>"  method="post" >
+    <form action="/modify_rsvp/<%= @the_rsvp.id"  method="post">
       <div>
         <label for="user_id_box">
           User
-        </label>
+        </label> %>
 
-        <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_rsvp.user_id %>">
-      </div>
+        <%# <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_rsvp.user_id"> %>
+      <%# </div>
 
       <div>
         <label for="food_id_box">
           Food
         </label>
 
-        <input type="text" id="food_id_box" name="query_food_id" value="<%= @the_rsvp.food_id %>">
-      </div>
+        <input type="text" id="food_id_box" name="query_food_id" value="<%= @the_rsvp.food_id %>
+      <%# </div>
 
       <button>
         Update rsvp
-      </button>
-    </form>
-  </div>
-</div>
+      </button> %>
+    <%# </form>
+  </div>  %> 
+
+   
+</div> 
 
 <hr>
