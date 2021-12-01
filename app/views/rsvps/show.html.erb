@@ -37,8 +37,15 @@
         Image:
       </dt>
       <dd>
-       <img src="<%= @the_rsvp.food.image %>">
+       <img style="width: 300px; height: 300px;" src="<%= @the_rsvp.food.image %>">
         
+      </dd>
+
+       <dt>
+        Meals avaliable
+      </dt>
+      <dd>
+        <%= @the_rsvp.food.meals_avaliable - @the_rsvp.food.rsvps.count %>
       </dd>
 
       <dt>
