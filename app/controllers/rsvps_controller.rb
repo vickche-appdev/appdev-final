@@ -1,6 +1,6 @@
 class RsvpsController < ApplicationController
   def index
-    matching_rsvps = Rsvp.all
+    matching_rsvps = Rsvp.where({ :user_id => session.fetch(:user_id) })
 
     @list_of_rsvps = matching_rsvps.order({ :created_at => :desc })
 
