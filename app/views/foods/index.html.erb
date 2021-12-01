@@ -6,6 +6,16 @@
   </div>
 </div>
 
+<div>
+  <div>
+    <h2>
+      Sign up for email notifications: 
+      <%# api insert text thing %>
+    </h2>
+  </div>
+</div>>
+
+
 <hr>
 
 <div>
@@ -68,7 +78,7 @@
     <table border="1">
       <tr>
         <th>
-          ID
+          Free Food ID #
         </th>
 
         <th>
@@ -88,16 +98,20 @@
         </th>
 
         <th>
-          User
+          Location
         </th>
 
         <th>
+          Posted By
+        </th>
+
+        <%# <th>
           Created at
-        </th>
+        </th> %>
 
-        <th>
+        <%# <th>
           Updated at
-        </th>
+        </th> %>
 
         <th>
         </th>
@@ -123,20 +137,30 @@
         </td>
 
         <td>
-          <img src="<%= a_food.image %>">
-          
+        
+          <img style="width: 200px; height: 200px;" src="<%= a_food.image %>">
+        
+        </td>
+
+        <%# <td>
+          <%= a_food.location %>
+        <%# </td> %> 
+
+        <td>
+        Filler for location API
         </td>
 
         <td>
           <%= a_food.user_id %>
+          Figure out how to make this username
         </td>
 
+        <%# <td>
+          <%# <%= time_ago_in_words(a_food.created_at) %> 
+        <%# </td>
         <td>
-          <%= time_ago_in_words(a_food.created_at) %> ago
-        </td>
-        <td>
-          <%= time_ago_in_words(a_food.updated_at) %> ago
-        </td>
+          <%= time_ago_in_words(a_food.updated_at) %> 
+        <%# </td> %>  
 
         <td>
           <a href="/foods/<%= a_food.id %>">
