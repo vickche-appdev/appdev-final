@@ -24,7 +24,7 @@
       Got leftovers? Post them here:
     </h2>
 
-    <form action="/insert_food" method="post">
+<form action="/insert_food" method="post" class="form-horizontal" enctype="multipart/form-data">
       <div>
         <label for="title_box">
           Title
@@ -54,7 +54,9 @@
           Image
         </label>
 
-        <input type="text" id="image_box" name="query_image">
+        <input type="file" id="image_box" name="query_image" class="form-control">
+
+        
       </div>
 
       <div>
@@ -74,7 +76,7 @@
         <input type="text" id="user_id_box" name="query_user_id">
       </div> %>
 
-      <button>
+      <button class ="btn btn-danger">
         Create food
       </button>
     </form>
@@ -84,13 +86,13 @@
 <hr>
 <div>
   <div>
-    <table border="1">
-      <tr>
-        <th>
+    <table border="2">
+      <tr border ="1">
+        <%# <th>
           Free Food ID #
-        </th>
+        </th> %>
 
-        <th>
+        <th border = "1">
           Title
         </th>
 
@@ -102,8 +104,13 @@
           Meals avaliable
         </th>
 
+        
+
         <th>
           Image
+        </th>
+
+        <th>
         </th>
 
         <th>
@@ -122,15 +129,14 @@
           Updated at
         </th> %>
 
-        <th>
-        </th>
+        
       </tr>
 
       <% @list_of_foods.each do |a_food| %>
       <tr>
-        <td>
+        <%# <td>
           <%= a_food.id %>
-        </td>
+        <%# </td> %> 
 
         <td>
           <%= a_food.title %>
@@ -154,7 +160,7 @@
         </td>
 
          <td>
-          <%# <%= a_food.location %> %>
+          <%# <%= a_food.location %> 
          </td>
 
         <td>
@@ -162,8 +168,8 @@
         </td>
 
         <td>
-          <%= a_food.user_id %>
-          Figure out how to make this username
+          <%= a_food.poster.first_name %>
+          
         </td>
 
         <%# <td>

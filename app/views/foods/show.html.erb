@@ -14,7 +14,7 @@
 <%#and if @user_bookmarks isnt signed in... How to tell if they are signed in?%>
 
   <% if @user_rsvps == nil %>
-  <%# <% if @the_food.meals_avaliable.to_i - @the_food.rsvps.count =/= 0  %> %>
+  <%# <% if @the_food.meals_avaliable.to_i - @the_food.rsvps.count =/= 0  %> 
 
 <dt>RSVP for this meal</dt>
   <dd>
@@ -56,6 +56,7 @@
         </a>
       </div>
 
+<% if @current_user != nil %>
 <% if @current_user.id == @the_food.user_id %>
       <div>
         <a href="/delete_food/<%= @the_food.id %>">
@@ -63,6 +64,7 @@
         </a>
       </div>
     </div>
+<% end %>
 <% end %>
 
     <dl>

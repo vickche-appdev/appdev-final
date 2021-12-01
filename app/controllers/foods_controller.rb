@@ -3,6 +3,7 @@ class FoodsController < ApplicationController
     matching_foods = Food.all
 
     @list_of_foods = matching_foods.order({ :created_at => :desc })
+    
 
     render({ :template => "foods/index.html.erb" })
   end
@@ -25,9 +26,9 @@ class FoodsController < ApplicationController
     the_food.title = params.fetch("query_title")
     the_food.caption = params.fetch("query_caption")
     the_food.meals_avaliable = params.fetch("query_meals_avaliable")
-    the_food.image = params.fetch("query_image")
+    the_food.image = params.fetch(:query_image)
     the_food.user_id = session.fetch(:user_id)
-    # fix thi
+   
     
 
     if the_food.valid?
