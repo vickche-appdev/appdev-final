@@ -57,6 +57,15 @@
         <input type="text" id="image_box" name="query_image">
       </div>
 
+      <div>
+        <label for="address">
+          Location
+        </label>
+
+        <input type="text" id="address" name="user_street_address">
+      </div>
+      
+
       <%# <div>
         <label for="user_id_box">
           User
@@ -132,7 +141,9 @@
         </td>
 
         <td>
-          <%= a_food.meals_avaliable - a_food.rsvps.count %>
+          
+          <%= a_food.meals_avaliable.to_i - a_food.rsvps.count %> 
+          <%#why did this stop working%>
           
         </td>
 
@@ -142,9 +153,9 @@
         
         </td>
 
-        <%# <td>
-          <%= a_food.location %>
-        <%# </td> %> 
+         <td>
+          <%# <%= a_food.location %> %>
+         </td>
 
         <td>
         Filler for location API
