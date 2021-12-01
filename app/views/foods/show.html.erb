@@ -10,10 +10,10 @@
     </h1>
 
 
-<% if @user_bookmarks == nil %>
+
 <%#and if @user_bookmarks isnt signed in... How to tell if they are signed in?%>
 
-
+  <% if @user_rsvps == nil %>
 
 <dt>RSVP for this meal</dt>
   <dd>
@@ -28,20 +28,35 @@
     </form>
   </dd>
 
-<% else %>
+  <% else %>
+  <div>
+        <a href="/delete_rsvp/<%= @user_rsvps.id %>">
+           Un-RSVP from this meal
+        </a>
+      </div>
+    </div>
 
-<% end %>
+  <% end %>
+  <div>
+    <%=  %>
+  </div>
+
+  <div>
+  </div>
+
+
+
 
     <div>
       <div>
         <a href="/foods">
-          Go back
+          Go back to home
         </a>
       </div>
 
       <div>
         <a href="/delete_food/<%= @the_food.id %>">
-          Delete food
+          Delete Free Food Posting
         </a>
       </div>
     </div>
@@ -65,7 +80,7 @@
         Meals avaliable
       </dt>
       <dd>
-        <%= @the_food.meals_avaliable %>
+        <%= @the_food.meals_avaliable - @the_food.rsvps.count %>
       </dd>
 
       <dt>
@@ -76,10 +91,11 @@
       </dd>
 
       <dt>
-        User
+        Posted By
       </dt>
       <dd>
         <%= @the_food.user_id %>
+        <%#= @the_food.poster first_name %>
       </dd>
 
       <dt>
@@ -155,5 +171,7 @@
     </form>
   </div>
 </div>
+
+
 
 <hr>

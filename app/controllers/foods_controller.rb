@@ -14,6 +14,9 @@ class FoodsController < ApplicationController
 
     @the_food = matching_foods.at(0)
 
+    @rsvped_foods = Rsvp.where({ :food_id => the_id})
+    @user_rsvps = @rsvped_foods.where({ :user_id => session.fetch(:user_id)}).at(0)
+
     render({ :template => "foods/show.html.erb" })
   end
 
@@ -23,7 +26,9 @@ class FoodsController < ApplicationController
     the_food.caption = params.fetch("query_caption")
     the_food.meals_avaliable = params.fetch("query_meals_avaliable")
     the_food.image = params.fetch("query_image")
-    the_food.user_id = params.fetch("query_user_id")
+    the_food.user_id = session.fetch(:user_id)
+    # fix thi
+    
 
     if the_food.valid?
       the_food.save

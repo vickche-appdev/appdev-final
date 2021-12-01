@@ -13,6 +13,8 @@
 #
 class Food < ApplicationRecord
   def poster
-    return User.where({ :id => self.owner_id }).at(0)
+    return User.where({ :id => self.user_id }).at(0)
   end
+  
+  has_many(:rsvps, { :class_name => "Rsvp", :foreign_key => "user_id"})
 end
