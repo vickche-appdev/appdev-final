@@ -28,6 +28,7 @@ class FoodsController < ApplicationController
     the_food.meals_avaliable = params.fetch("query_meals_avaliable")
     the_food.image = params.fetch(:query_image)
     the_food.user_id = session.fetch(:user_id)
+    
    
     
 
