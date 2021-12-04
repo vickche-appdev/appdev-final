@@ -8,12 +8,10 @@
 
 <div>
   <div>
-    <h2>
-      Sign up for email notifications: 
       <%# api insert text thing %>
-    </h2>
+      <button type="button" class="btn btn-info">Sign up for email notifications! </button>
   </div>
-</div>>
+</div>
 
 
 <hr>
@@ -24,30 +22,31 @@
       Got leftovers? Post them here:
     </h2>
 
+
+    
+
+
 <form action="/insert_food" method="post" class="form-horizontal" enctype="multipart/form-data">
-      <div>
-        <label for="title_box">
-          Title
-        </label>
+      
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control" 
+        name="query_title" id="floatingInput" placeholder="Free bagels...">
 
-        <textarea id="title_box" name="query_title" rows="3"></textarea>
+        <label for="floatingInput">Title</label>
       </div>
 
-      <div>
-        <label for="caption_box">
-          Caption
-        </label>
+      <div class="form-floating">
+        <textarea name="query_caption class="form-control"  id="floatingTextarea"></textarea>
+        <label for="floatingTextarea">Description</label>
+      </div>
+            
+      <div class="form-floating mb-3">
+        <input type="integer" class="form-control" 
+        name="query_meals_avaliable" id="floatingInput" placeholder="How many do you have?">
 
-        <textarea id="caption_box" name="query_caption" rows="3"></textarea>
+        <label for="floatingInput">Meals Avaliable</label>
       </div>
 
-      <div>
-        <label for="meals_avaliable_box">
-          Meals avaliable
-        </label>
-
-        <input type="text" id="meals_avaliable_box" name="query_meals_avaliable">
-      </div>
 
       <div>
         <label for="image_box">
@@ -55,17 +54,19 @@
         </label>
 
         <input type="file" id="image_box" name="query_image" class="form-control">
-
-        
       </div>
 
       <div>
-        <label for="address">
-          Location
-        </label>
-
-        <input type="text" id="address" name="user_street_address">
+          <br>
       </div>
+
+       <div class="form-floating mb-3">
+        <input type="text" class="form-control" 
+        name="user_street_address" id="floatingInput" placeholder="Where is this?">
+
+        <label for="floatingInput">Location</label>
+      </div>
+      
       
 
       <%# <div>
