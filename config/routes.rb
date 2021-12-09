@@ -43,6 +43,9 @@ Rails.application.routes.draw do
   
   # SIGN OUT        
   get("/user_sign_out", { :controller => "user_authentication", :action => "destroy_cookies" })
+
+  # NOTIFICATIONS
+  post("/notifications", { :controller => "user_authentication", :action => "notification_sign_up"})
              
   #------------------------------
 

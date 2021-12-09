@@ -17,4 +17,7 @@ class User < ApplicationRecord
 
   has_many(:rsvps, { :class_name => "Rsvp", :foreign_key => "user_id", :dependent => :destroy })
   has_many(:rsvped_foods, { :through => :rsvps, :source => :foods })
+
+
+
 end

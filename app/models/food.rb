@@ -5,6 +5,7 @@
 #  id              :integer          not null, primary key
 #  caption         :text
 #  image           :string
+#  location        :string
 #  meals_avaliable :integer
 #  title           :text
 #  created_at      :datetime         not null
@@ -20,7 +21,14 @@ class Food < ApplicationRecord
   validates :user_id, :presence => true
 
   mount_uploader :image, ImageUploader
-  
-  
-  has_many(:rsvps, { :class_name => "Rsvp", :foreign_key => "user_id", :dependent => :destroy })
+
+  #has_many(:rsvps, { :class_name => "Rsvp", :foreign_key => "user_id", :dependent => :destroy })
+
+  def rsvps
+    my_id = self.id
+
+    matching_rsvps = Rsvp.where({ :food_id => my_id })
+
+    return matching_rsvps
+  end
 end

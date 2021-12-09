@@ -9,7 +9,18 @@
 <div>
   <div>
       <%# api insert text thing %>
-      <button type="button" class="btn btn-info">Sign up for email notifications! </button>
+      <form action="/notifications" method="post" class="form-horizontal" >
+
+       <div>
+        <label for="user_id">
+        Enter Email
+        </label>
+
+        <input type="text" id="user_id" name= "query_email" placeholder= <%= @current_user.email %>> 
+      </div> 
+
+      <button type="button" class="btn btn-info">Sign up for mailing list! </button>
+    </form>
   </div>
 </div>
 
@@ -36,7 +47,7 @@
       </div>
 
       <div class="form-floating">
-        <textarea name="query_caption class="form-control"  id="floatingTextarea"></textarea>
+        <textarea name="query_caption" class="form-control"  id="floatingTextarea"></textarea>
         <label for="floatingTextarea">Description</label>
       </div>
             
@@ -62,7 +73,7 @@
 
        <div class="form-floating mb-3">
         <input type="text" class="form-control" 
-        name="user_street_address" id="floatingInput" placeholder="Where is this?">
+        name="user_address" id="floatingInput" placeholder="Where is this?">
 
         <label for="floatingInput">Location</label>
       </div>
@@ -114,8 +125,12 @@
         <th>
         </th>
 
+
         <th>
           Location
+        </th>
+
+ <th>
         </th>
 
         <th>
@@ -150,6 +165,7 @@
         <td>
           
           <%= a_food.meals_avaliable.to_i - a_food.rsvps.count %> 
+          
           <%#why did this stop working%>
           
         </td>
@@ -161,12 +177,18 @@
         </td>
 
          <td>
-          <%# <%= a_food.location %>  
+            <br>
          </td>
 
-        <td>
-        Filler for location API
-        </td>
+         <td>
+          <%= a_food.location %>  
+         </td>
+
+
+       
+         <td>
+            <br>
+         </td>
 
         <td>
           <%= a_food.poster.first_name %>

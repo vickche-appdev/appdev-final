@@ -82,5 +82,32 @@ class UserAuthenticationController < ApplicationController
     
     redirect_to("/", { :notice => "User account cancelled" })
   end
+
+  def notification_sign_up
+   
+
+
+    @user = User.where({ :email => params.fetch("query_email") }).first
+    #@user.email = params.fetch("query_email")
+
+  # Retrieve your credentials from secure storage
+    mg_api_key = ENV.fetch("MAILGUN_API_KEY")
+    mg_sending_domain = ENV.fetch("MAILGUN_SENDING_DOMAIN")
+
+  # Create an instance of the Mailgun Client and authenticate with your API key
+    mg_client = Mailgun::Client.new(mg_api_key)
+
+  # Craft your email as a Hash with these four keys
+  email_parameters =  { 
+    :from => "umbrella@appdevproject.com",
+    :to => @user.email ,  # Put your own email address here if you want to see it in action
+    :subject => "Free Food Coming!",
+    :text => "Keep an eye out for new posts!"
+  }
+
+  # Send your email!
+  mg_client.send_message(mg_sending_domain, email_parameters)
+  end
+
  
 end
