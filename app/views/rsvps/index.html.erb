@@ -40,7 +40,7 @@
     <table border = 1>
       <tr>
         <th>
-          RSVP #
+          RSVP 
         </th>
 
         <th>
@@ -57,7 +57,7 @@
       <% @list_of_rsvps.each do |a_rsvp| %>
       <tr>
         <td>
-          <%= a_rsvp.id %>
+          <%= a_rsvp.rsvper.rsvps.count %>
         </td>
 
         <td>

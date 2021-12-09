@@ -7,6 +7,8 @@
 </div>
 
 <div>
+
+<% if @current_user != nil %>
   <div>
       <%# api insert text thing %>
       <form action="/notifications" method="post" class="form-horizontal" >
@@ -22,6 +24,7 @@
       <button type="button" class="btn btn-info">Sign up for mailing list! </button>
     </form>
   </div>
+  <% end %>
 </div>
 
 

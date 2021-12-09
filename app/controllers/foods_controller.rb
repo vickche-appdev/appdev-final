@@ -19,7 +19,45 @@ class FoodsController < ApplicationController
     @rsvped_foods = Rsvp.where({ :food_id => the_id})
     @user_rsvps = @rsvped_foods.where({ :user_id => session.fetch(:user_id)}).at(0)
 
+#LOCATION MAP
+#if the_food.location.valid?
+@street_address = Food.where({ :id => the_id }).at(0)
+
+@maps_url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + @street_address.location + "&key=AIzaSyD8RrOFB0dPsF-leqeFJdmX3yOvcQbfNyY"
+
+
+@raw_json_string = open(@maps_url).read
+
+@parsed_json = JSON.parse(@raw_json_string)
+
+@results_array = @parsed_json.fetch("results")
+
+@first_result = @results_array.at(0)
+
+@geometry_hash = @first_result.fetch("geometry")
+
+@location_hash = @geometry_hash.fetch("location")
+
+@latitude = @location_hash.fetch("lat").to_s
+@longitude = @location_hash.fetch("lng").to_s
+
+# @latitude + "," + @longitude 
+
+@map = "https://www.google.com/maps/embed/v1/view?zoom=17&center=" + @latitude + "," + @longitude + "&key=AIzaSyD8RrOFB0dPsF-leqeFJdmX3yOvcQbfNyY">
+
+
+
+
+
+
+
+
+
+
+
+
     render({ :template => "foods/show.html.erb" })
+
   end
 
   def create
@@ -71,28 +109,8 @@ class FoodsController < ApplicationController
   end
 
 
-  def location
-    # Parameters: {"user_street_address"=>"Merchandise Mart, Chicago"}
 
-    @street_address = params.fetch("user_street_address")
 
-    @maps_url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + @street_address + "&key=AIzaSyD8RrOFB0dPsF-leqeFJdmX3yOvcQbfNyY"
-
-    @raw_json_string = open(@maps_url).read
-
-    @parsed_json = JSON.parse(@raw_json_string)
-
-    @results_array = @parsed_json.fetch("results")
-
-    @first_result = @results_array.at(0)
-    
-    @geometry_hash = @first_result.fetch("geometry")
-
-    @location_hash = @geometry_hash.fetch("location")
-
-    render({ :template => "foods/index.html.erb" })
-
-end
 
 def address
 
@@ -101,6 +119,7 @@ def address
   render({ :template => "foods/index.html.erb" })
 
 end
+
 
 
 
@@ -119,7 +138,7 @@ def notification_sign_up
 # Craft your email as a Hash with these four keys
 email_parameters =  { 
   :from => "umbrella@appdevproject.com",
-  :to => @user_email ,  # Put your own email address here if you want to see it in action
+  :to => params.fetch("user_email") ,  # Put your own email address here if you want to see it in action
   :subject => "Free Food Coming!",
   :text => "Keep an eye out for new posts!"
 }
