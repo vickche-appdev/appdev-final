@@ -19,44 +19,36 @@ class FoodsController < ApplicationController
     @rsvped_foods = Rsvp.where({ :food_id => the_id})
     @user_rsvps = @rsvped_foods.where({ :user_id => session.fetch(:user_id)}).at(0)
 
-#LOCATION MAP
+#LOCATION MAP - make sure inputs with no location can still show details
 #if the_food.location.valid?
-@street_address = Food.where({ :id => the_id }).at(0)
 
-@maps_url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + @street_address.location + "&key=AIzaSyD8RrOFB0dPsF-leqeFJdmX3yOvcQbfNyY"
+if @the_food.location != nil
+    @street_address = Food.where({ :id => the_id }).at(0)
 
-
-@raw_json_string = open(@maps_url).read
-
-@parsed_json = JSON.parse(@raw_json_string)
-
-@results_array = @parsed_json.fetch("results")
-
-@first_result = @results_array.at(0)
-
-@geometry_hash = @first_result.fetch("geometry")
-
-@location_hash = @geometry_hash.fetch("location")
-
-@latitude = @location_hash.fetch("lat").to_s
-@longitude = @location_hash.fetch("lng").to_s
-
-@location = @latitude + "," + @longitude 
+    @maps_url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + @street_address.location + "&key=AIzaSyD8RrOFB0dPsF-leqeFJdmX3yOvcQbfNyY"
 
 
-@map = "https://www.google.com/maps/embed/v1/view?zoom=17&center="+ @location +"&key=AIzaSyD8RrOFB0dPsF-leqeFJdmX3yOvcQbfNyY"
+    @raw_json_string = open(@maps_url).read
 
-#@map = "https://www.google.com/maps/embed/v1/view?zoom=12&center=" + @location + "&key=AIzaSyD8RrOFB0dPsF-leqeFJdmX3yOvcQbfNyY">
+    @parsed_json = JSON.parse(@raw_json_string)
+
+    @results_array = @parsed_json.fetch("results")
+
+    @first_result = @results_array.at(0)
+
+    @geometry_hash = @first_result.fetch("geometry")
+
+    @location_hash = @geometry_hash.fetch("location")
+
+    @latitude = @location_hash.fetch("lat").to_s
+    @longitude = @location_hash.fetch("lng").to_s
+
+    @location = @latitude + "," + @longitude 
 
 
+    @map = "https://www.google.com/maps/embed/v1/view?zoom=17&center="+ @location +"&key=AIzaSyD8RrOFB0dPsF-leqeFJdmX3yOvcQbfNyY"
 
-
-
-
-
-
-
-
+end 
 
 
     render({ :template => "foods/show.html.erb" })
