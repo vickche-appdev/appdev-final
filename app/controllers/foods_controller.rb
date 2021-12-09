@@ -41,9 +41,12 @@ class FoodsController < ApplicationController
 @latitude = @location_hash.fetch("lat").to_s
 @longitude = @location_hash.fetch("lng").to_s
 
-# @latitude + "," + @longitude 
+@location = @latitude + "," + @longitude 
 
-@map = "https://www.google.com/maps/embed/v1/view?zoom=17&center=" + @latitude + "," + @longitude + "&key=AIzaSyD8RrOFB0dPsF-leqeFJdmX3yOvcQbfNyY">
+
+@map = "https://www.google.com/maps/embed/v1/view?zoom=17&center="+ @location +"&key=AIzaSyD8RrOFB0dPsF-leqeFJdmX3yOvcQbfNyY"
+
+#@map = "https://www.google.com/maps/embed/v1/view?zoom=12&center=" + @location + "&key=AIzaSyD8RrOFB0dPsF-leqeFJdmX3yOvcQbfNyY">
 
 
 

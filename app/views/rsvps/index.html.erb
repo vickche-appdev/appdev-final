@@ -39,16 +39,16 @@
   <div>
     <table border = 1>
       <tr>
-        <th>
+        <%# <th>
           RSVP 
-        </th>
+        </th> %>
 
         <th>
           User
         </th>
 
         <th>
-          Food
+          Reservation
         </th>
 
       
@@ -56,9 +56,9 @@
 
       <% @list_of_rsvps.each do |a_rsvp| %>
       <tr>
-        <td>
-          <%= a_rsvp.rsvper.rsvps.count %>
-        </td>
+        <%# <td>
+          <%= a_rsvp. %>
+        <%# </td> %> 
 
         <td>
           <%= a_rsvp.user.first_name %>
