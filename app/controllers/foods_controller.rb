@@ -148,6 +148,16 @@ email_parameters =  {
 
 # Send your email!
 mg_client.send_message(mg_sending_domain, email_parameters)
+
+if email_parameters.valid?
+  redirect_to("/foods", { :notice => "Signed up successfully." })
+else
+  redirect_to("/foods", { :notice => "Failed to sign up successfully." })
+end
+
+
+
+
 end
 
 

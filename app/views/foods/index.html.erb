@@ -18,10 +18,12 @@
         Enter Email
         </label>
 
-        <input type="text" id="user_id" name= "query_email" placeholder= <%= @current_user.email %>> 
+        <input type="text" id="user_id" name= "query_email" value=<%= @current_user.email %> placeholder= <%= @current_user.email %>> 
       </div> 
 
       <button type="button" class="btn btn-info">Sign up for mailing list! </button>
+
+      
     </form>
   </div>
   <% end %>
